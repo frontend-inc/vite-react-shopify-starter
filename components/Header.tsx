@@ -26,11 +26,16 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center h-full">
           {/* Logo */}
           <a to="/" className="text-2xl font-bold text-black font-heading">
-            My Brand
+            Store
           </a>
 
-          {/* Cart Icon */}
-          <CartIcon />
+          {/* Search and Cart Icons */}
+          <div className="flex items-center gap-2">
+            <button className="p-2 text-black hover:text-gray-600 transition-colors">
+              <i className="ri-search-line text-2xl"></i>
+            </button>
+            <CartIcon />
+          </div>
         </div>
       </div>
     </nav>
