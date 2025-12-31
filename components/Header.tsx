@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../contexts/CartContext';
+import config from '@/lib/config.json';
 
 const CartIcon: React.FC = () => {
   const { state, toggleCart } = useCart();
@@ -22,20 +23,23 @@ const CartIcon: React.FC = () => {
 const Header: React.FC = () => {
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-30 h-16">
-      <div className="max-w-7xl mx-auto px-4 h-full">
+      <div className="container mx-auto px-4 h-full">
         <div className="flex justify-between items-center h-full">
           {/* Logo */}
-          <a to="/" className="text-2xl font-bold text-black font-heading">
-            Store
+          <a href="/" className="text-2xl font-bold text-black font-heading">
+            {config.branding.logo.url ? (
+              <img
+                src={config.branding.logo.url}
+                alt={config.branding.logo.alt || 'Store'}
+                className="h-8"
+              />
+            ) : (
+              'Store'
+            )}
           </a>
 
-          {/* Search and Cart Icons */}
-          <div className="flex items-center gap-2">
-            <button className="p-2 text-black hover:text-gray-600 transition-colors">
-              <i className="ri-search-line text-2xl"></i>
-            </button>
-            <CartIcon />
-          </div>
+          {/* Cart Icon */}
+          <CartIcon />
         </div>
       </div>
     </nav>
